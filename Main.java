@@ -9,6 +9,9 @@ public class Main implements ActionListener {
     public JMenu home_menu, books_menu, members_menu, help_menu, settings_menu;
     public JMenuItem search_book_by_name, search_book_by_code, search_member_by_name, search_member_by_code;
 
+    public ImageIcon logo , search_img;
+
+
     public Main() {
         frame = new JFrame();
 
@@ -22,8 +25,8 @@ public class Main implements ActionListener {
         frame.setTitle("Library System");
 
         //sets the icon to the logo of the library
-        Image icon = new ImageIcon("C://Users//Azrieli//IntelliJIDEAProjects//Library").getImage();
-        frame.setIconImage(icon);
+        logo = new ImageIcon("logo_library.png");
+        frame.setIconImage(logo.getImage());
 
         frame.setLayout(new FlowLayout());
 
@@ -60,6 +63,15 @@ public class Main implements ActionListener {
 
         search_book_by_name.setMnemonic(KeyEvent.VK_M);
         search_book_by_name.setMnemonic(KeyEvent.VK_M);
+
+        //image icon
+        search_img = new ImageIcon("search.png");
+
+        search_book_by_name.setIcon(search_img);
+//        search_book_by_code.setIcon(search_img);
+//        search_member_by_name.setIcon(search_img);
+//        search_member_by_name.setIcon(search_img);
+
 
         books_menu.add(search_book_by_name);
         books_menu.add(search_book_by_code);
