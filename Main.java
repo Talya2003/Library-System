@@ -62,6 +62,22 @@ public class Main implements ActionListener {
         help_menu.setMnemonic(KeyEvent.VK_H);
         settings_menu.setMnemonic(KeyEvent.VK_S);
 
+        home_menu.setForeground(Color.WHITE);
+        home_menu.setFont(new Font("Calibri" , Font.PLAIN , 20));
+
+        books_menu.setForeground(Color.WHITE);
+        books_menu.setFont(new Font("Calibri" , Font.PLAIN , 20));
+
+        members_menu.setForeground(Color.WHITE);
+        members_menu.setFont(new Font("Calibri" , Font.PLAIN , 20));
+
+        help_menu.setForeground(Color.WHITE);
+        help_menu.setFont(new Font("Calibri" , Font.PLAIN , 20));
+
+        settings_menu.setForeground(Color.WHITE);
+        settings_menu.setFont(new Font("Calibri" , Font.PLAIN , 20));
+        
+
         search_book_by_name.setMnemonic(KeyEvent.VK_S);
         search_book_by_name.setMnemonic(KeyEvent.VK_S);
 
@@ -90,7 +106,7 @@ public class Main implements ActionListener {
         menu_bar.add(settings_menu);
 
         //sets the background color of the menu bar (Hexadecimal value)
-        menu_bar.setBackground(Color.decode("#594637"));
+        menu_bar.setBackground(Color.decode("#847772"));
 
         frame.setJMenuBar(menu_bar);
 
