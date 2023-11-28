@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Main implements ActionListener {
+public class Main extends JPanel implements KeyListener , ActionListener {
 
     public JFrame frame;
     public JMenuBar menu_bar;
@@ -94,9 +94,9 @@ public class Main implements ActionListener {
         search_img = new ImageIcon("search.png");
 
         search_book_by_name.setIcon(search_img);
-//        search_book_by_code.setIcon(search_img);
-//        search_member_by_name.setIcon(search_img);
-//        search_member_by_name.setIcon(search_img);
+        search_book_by_code.setIcon(search_img);
+        search_member_by_name.setIcon(search_img);
+        search_member_by_code.setIcon(search_img);
 
 
         books_menu.add(search_book_by_name);
@@ -136,7 +136,7 @@ public class Main implements ActionListener {
 
 
         //the content of the home page
-        String htmlContent = "<html><div><br/><br/><br/></div>"
+        String html_content = "<html><div><br/><br/><br/></div>"
                 + "<p style='font-size: 10px; color: #D4C5B6; font-family: 'Calibri' , sans-serif;'>Welcome to the library system! " +
                 "Our library was founded in 1948 with the birth of the state. Here you will feel at home. The good and calm atmosphere, " +
                 "the vintage design <br/>and the warm attitude. Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut tempora assumenda " +
@@ -144,7 +144,7 @@ public class Main implements ActionListener {
                 "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut tempora assumenda voluptates, voluptas a maiores <br/>beatae molestiae " +
                 "a corrupt similique magnam. Repellendus and odit mollitia modi deserunt animi.</p> </html>";
         //creates a label and put the content on the screen
-        content_label = new JLabel(htmlContent);
+        content_label = new JLabel(html_content);
         content_label.setBorder(BorderFactory.createEmptyBorder(-400, 100, 0, 0));
         //add this to the background label
         background_label.add(content_label);
@@ -154,6 +154,15 @@ public class Main implements ActionListener {
         frame.setContentPane(background_label);
 
         frame.setVisible(true);
+    }
+
+
+
+    public void paint(Graphics g) {
+        g.setColor(Color.decode("#D4C5B6"));
+        g.fillRect(100 , 550 , 100 , 200);
+
+        g.dispose();
     }
 
 
@@ -175,10 +184,30 @@ public class Main implements ActionListener {
         if (e.getSource() == search_member_by_code) {
             System.out.println("you search a member by code");
         }
+
+
+        repaint();
     }
+
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        repaint();
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
+    }
+
+
 
     public static void main(String[] args) {
         Main main = new Main();
     }
-
 }
