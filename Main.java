@@ -9,7 +9,7 @@ public class Main implements ActionListener {
     public JMenu home_menu, books_menu, members_menu, help_menu, settings_menu;
     public JMenuItem search_book_by_name, search_book_by_code, search_member_by_name, search_member_by_code;
     public ImageIcon logo , search_img , library_img;
-    public JLabel welcome_label , content_label , background_label;
+    public JLabel welcome_label , content_label , background_label , shorts_label;
 
 
     public Main() {
@@ -148,6 +148,7 @@ public class Main implements ActionListener {
         content_label.setBorder(BorderFactory.createEmptyBorder(-400, 100, 0, 0));
         //add this to the background label
         background_label.add(content_label);
+
 
         //sets the content pane of the frame to the background label
         frame.setContentPane(background_label);
