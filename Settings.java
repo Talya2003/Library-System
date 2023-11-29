@@ -12,16 +12,15 @@ public class Settings extends JPanel implements KeyListener, ActionListener {
 
     public Settings() {
         frame = new JFrame("Settings");
-        //closes the software when the X of the frame is clicked.
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //closes only the settings page when the X of the frame is clicked.
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         //sets the screen size to be the screen size of the computer
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setSize(screenSize);
-    }
 
+        frame.getContentPane().setBackground(Color.decode("#847772"));
 
-    public static void main(String[] args) {
-        Settings settings = new Settings();
+        frame.setVisible(true);
     }
 
 
