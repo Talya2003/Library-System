@@ -184,6 +184,11 @@ public class Main extends JPanel implements KeyListener , ActionListener {
             System.out.println("you search a member by code");
         }
 
+        if (e.getSource() == settings_menu) {
+            System.out.println("you search a member by code");
+            Settings settings = new Settings();
+        }
+
 
         repaint();
     }
@@ -191,33 +196,37 @@ public class Main extends JPanel implements KeyListener , ActionListener {
 
     public void show_search_dialog() {
         class SearchDialog extends JDialog {
-            private JTextField bookNameField;
+            private JTextField book_name_field;
 
             public SearchDialog(JFrame parent) {
-                super(parent, "Search a book by its name", true);
+                super(parent, "Search a book by name", true);
 
-                JPanel searchPanel = new JPanel(new GridLayout(2, 2));
+                JPanel search_panel = new JPanel(new GridLayout(2, 2));
 
-                JLabel bookNameLabel = new JLabel("Book's name:");
-                bookNameField = new JTextField();
+                JLabel book_name_label = new JLabel("Book's name:");
+                book_name_field = new JTextField();
 
-                searchPanel.add(bookNameLabel);
-                searchPanel.add(bookNameField);
+                search_panel.add(book_name_label);
+                search_panel.add(book_name_field);
 
-                JButton searchButton = new JButton("Search");
-                searchButton.addActionListener(new ActionListener() {
+                JButton search_btn = new JButton("Search");
+                search_btn.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        String bookName = bookNameField.getText();
-                        System.out.println("Searching for book: " + bookName);
+                        String book_name = book_name_field.getText();
+                        System.out.println("Searching for book: " + book_name);
+
+                        //pass the book name to the AccessDatabaseConnection class
+                        AccessDatabaseConnection.search_book_by_name(book_name);
+
 
                         //close this window if you finish the operation
                         dispose();
                     }
                 });
 
-                searchPanel.add(searchButton);
-                add(searchPanel);
+                search_panel.add(search_btn);
+                add(search_panel);
 
                 pack();
                 setLocationRelativeTo(parent);
