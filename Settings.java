@@ -9,6 +9,7 @@ import java.awt.event.KeyListener;
 public class Settings extends JPanel implements KeyListener, ActionListener {
 
     public JFrame frame;
+    public JLabel title , label_language;
 
     public Settings() {
         frame = new JFrame("Settings");
@@ -19,6 +20,30 @@ public class Settings extends JPanel implements KeyListener, ActionListener {
         frame.setSize(screenSize);
 
         frame.getContentPane().setBackground(Color.decode("#847772"));
+
+        title = new JLabel("Settings");
+        title.setForeground(Color.BLACK);
+        title.setFont(new Font("Calibri", Font.BOLD, 70));
+        // Set the border to create space from the top
+        title.setBorder(BorderFactory.createEmptyBorder(-525, 515, 0, 515));
+
+        frame.add(title);
+        
+        
+        
+        
+        
+        /////////////////////////////////////
+        ////////////////////////////////////
+        //////////// add a label //////////
+        /////////////////////////////////////
+        ////////////////////////////////////       
+        
+        
+
+        String html_label_language = "<html></div><h5 style='font-size: 10px; color: #D4C5B6; font-family: 'Calibri' , sans-serif;'>Language: </h5></div></html>";
+        label_language = new JLabel(html_label_language);
+        frame.add(label_language);
 
         frame.setVisible(true);
     }
