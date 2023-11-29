@@ -8,8 +8,8 @@ public class Main extends JPanel implements KeyListener , ActionListener {
     public JMenuBar menu_bar;
     public JMenu home_menu, books_menu, members_menu, help_menu, settings_menu;
     public JMenuItem search_book_by_name, search_book_by_code, search_member_by_name, search_member_by_code;
-    public ImageIcon logo , search_img , library_img;
-    public JLabel welcome_label , content_label , background_label , shorts_label;
+    public ImageIcon logo, search_img, library_img;
+    public JLabel welcome_label, content_label, background_label, shorts_label;
 
 
     public Main() {
@@ -63,19 +63,19 @@ public class Main extends JPanel implements KeyListener , ActionListener {
         settings_menu.setMnemonic(KeyEvent.VK_S);
 
         home_menu.setForeground(Color.WHITE);
-        home_menu.setFont(new Font("Calibri" , Font.BOLD , 14));
+        home_menu.setFont(new Font("Calibri", Font.BOLD, 14));
 
         books_menu.setForeground(Color.WHITE);
-        books_menu.setFont(new Font("Calibri" , Font.BOLD , 14));
+        books_menu.setFont(new Font("Calibri", Font.BOLD, 14));
 
         members_menu.setForeground(Color.WHITE);
-        members_menu.setFont(new Font("Calibri" , Font.BOLD , 14));
+        members_menu.setFont(new Font("Calibri", Font.BOLD, 14));
 
         help_menu.setForeground(Color.WHITE);
-        help_menu.setFont(new Font("Calibri" , Font.BOLD , 14));
+        help_menu.setFont(new Font("Calibri", Font.BOLD, 14));
 
         settings_menu.setForeground(Color.WHITE);
-        settings_menu.setFont(new Font("Calibri" , Font.BOLD , 14));
+        settings_menu.setFont(new Font("Calibri", Font.BOLD, 14));
 
         //aligns the JMenu to the center of the JMenuBar
         home_menu.setHorizontalAlignment(SwingConstants.CENTER);
@@ -157,20 +157,19 @@ public class Main extends JPanel implements KeyListener , ActionListener {
     }
 
 
-
     public void paint(Graphics g) {
         g.setColor(Color.decode("#D4C5B6"));
-        g.fillRect(100 , 550 , 100 , 200);
+        g.fillRect(100, 550, 100, 200);
 
         g.dispose();
     }
-
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == search_book_by_name) {
             System.out.println("you search a book by name");
+            show_search_dialog();
         }
 
         if (e.getSource() == search_book_by_code) {
@@ -187,6 +186,46 @@ public class Main extends JPanel implements KeyListener , ActionListener {
 
 
         repaint();
+    }
+
+
+    public void show_search_dialog() {
+        class SearchDialog extends JDialog {
+            private JTextField bookNameField;
+
+            public SearchDialog(JFrame parent) {
+                super(parent, "Search a book by its name", true);
+
+                JPanel searchPanel = new JPanel(new GridLayout(2, 2));
+
+                JLabel bookNameLabel = new JLabel("Book's name:");
+                bookNameField = new JTextField();
+
+                searchPanel.add(bookNameLabel);
+                searchPanel.add(bookNameField);
+
+                JButton searchButton = new JButton("Search");
+                searchButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        String bookName = bookNameField.getText();
+                        System.out.println("Searching for book: " + bookName);
+
+                        //close this window if you finish the operation
+                        dispose();
+                    }
+                });
+
+                searchPanel.add(searchButton);
+                add(searchPanel);
+
+                pack();
+                setLocationRelativeTo(parent);
+            }
+        }
+
+        SearchDialog searchDialog = new SearchDialog(frame);
+        searchDialog.setVisible(true);
     }
 
 
