@@ -7,7 +7,7 @@ public class Main extends JPanel implements KeyListener , ActionListener {
     public JFrame frame;
     public JMenuBar menu_bar;
     public JMenu home_menu, books_menu, members_menu, help_menu, settings_menu;
-    public JMenuItem search_book_by_name, search_book_by_code, search_member_by_name, search_member_by_code;
+    public JMenuItem search_book_by_name, search_book_by_code, search_member_by_name, search_member_by_code , go_to_settings;
     public ImageIcon logo, search_img, library_img;
     public JLabel welcome_label, content_label, background_label, shorts_label;
 
@@ -48,11 +48,15 @@ public class Main extends JPanel implements KeyListener , ActionListener {
         search_member_by_name = new JMenuItem("Search member by name");
         search_member_by_code = new JMenuItem("Search member by code");
 
+        go_to_settings = new JMenuItem("Go to Settings");
+
         search_book_by_name.addActionListener(this);
         search_book_by_code.addActionListener(this);
 
         search_member_by_name.addActionListener(this);
         search_member_by_code.addActionListener(this);
+
+        go_to_settings.addActionListener(this);
 
         //add Shortcuts
         //click on Alt + the letter (VK_?) and it will be opened
@@ -90,6 +94,8 @@ public class Main extends JPanel implements KeyListener , ActionListener {
         search_book_by_name.setMnemonic(KeyEvent.VK_M);
         search_book_by_name.setMnemonic(KeyEvent.VK_M);
 
+        go_to_settings.setMnemonic(KeyEvent.VK_S);
+
         //image icon of the search
         search_img = new ImageIcon("search.png");
 
@@ -104,6 +110,8 @@ public class Main extends JPanel implements KeyListener , ActionListener {
 
         members_menu.add(search_member_by_name);
         members_menu.add(search_member_by_code);
+
+        settings_menu.add(go_to_settings);
 
         menu_bar.add(home_menu);
         menu_bar.add(books_menu);
@@ -150,8 +158,15 @@ public class Main extends JPanel implements KeyListener , ActionListener {
         background_label.add(content_label);
 
 
+//        String html_rectangles = "<html><div style='background: white; box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1); border-radius: 0.5rem; position: relative; overflow: hidden; text-align: center; width='150px'; height='150px'></div></html>";
+//        shorts_label = new JLabel(html_rectangles);
+//        shorts_label.setBorder(BorderFactory.createEmptyBorder(-700, 200, 0, 0));
+//        background_label.add(content_label);
+
+
         //sets the content pane of the frame to the background label
         frame.setContentPane(background_label);
+
 
         frame.setVisible(true);
     }
@@ -184,8 +199,8 @@ public class Main extends JPanel implements KeyListener , ActionListener {
             System.out.println("you search a member by code");
         }
 
-        if (e.getSource() == settings_menu) {
-            System.out.println("you search a member by code");
+        if (e.getSource() == go_to_settings) {
+            System.out.println("Settings");
             Settings settings = new Settings();
         }
 
