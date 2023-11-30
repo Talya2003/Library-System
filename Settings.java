@@ -29,17 +29,7 @@ public class Settings extends JPanel implements KeyListener, ActionListener {
 
         frame.add(title);
         
-        
-        
-        
-        
-        /////////////////////////////////////
-        ////////////////////////////////////
-        //////////// add a label //////////
-        /////////////////////////////////////
-        ////////////////////////////////////       
-        
-        
+
 
         String html_label_language = "<html></div><h5 style='font-size: 10px; color: #D4C5B6; font-family: 'Calibri' , sans-serif;'>Language: </h5></div></html>";
         label_language = new JLabel(html_label_language);
